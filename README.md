@@ -1,4 +1,4 @@
-### Seylors The Game
+# Seylors The Game
 
 ## Description :
 
@@ -14,10 +14,14 @@ The game is developed in C++ using the SFML librairy
 
 ## Launch game : 
 
-# You can launch the game using this commands : 
+### Install SFML : 
 
-make
-./seylors
+```sudo apt-get install libsfml-dev```
 
-# And enjoy !
+### You can launch the game using this commands : 
+
+```make```
+```./seylors```
+
+### And enjoy !
 

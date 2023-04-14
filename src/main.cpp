@@ -6,9 +6,26 @@
 */
 
 #include "main.hpp"
+#include "window/GameWindow.hpp"
+#include "game/Game.hpp"
+#include "gameMenu/GameMenu.hpp"
 
 int main(int argc, char **argv)
 {
-    std::cout << "Hello Saylor !" << std::endl;
+    GameWindow gameWindow;
+    gameWindow.createWindow();
+    Game myGame;
+    myGame.createGame(&gameWindow);
+    GameMenu myMenu;
+    myMenu.createMenu(&gameWindow);
+
+    while (gameWindow.getWindow().isOpen()) {
+        while (gameWindow.getWindow().pollEvent(gameWindow.getEvent())) {
+            if (gameWindow.getStatus() == MENU)
+                myMenu.gameMenuLoop();
+            else if (gameWindow.getStatus() == INGAME)
+                myGame.gameLoop();
+        }
+    }
     return 0;
 }

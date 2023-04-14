@@ -7,11 +7,17 @@
 
 PP = g++
 src = src/main.cpp	\
+	  src/window/GameWindow.cpp	\
+	  src/game/Game.cpp	\
+	  src/gameMenu/GameMenu.cpp	\
+	  src/game/player/Human.cpp	\
+	  src/game/player/Boat.cpp	\
+	#   src/game/GameClock.cpp	\
 
 NAME = seylors
 
 ${NAME}:
-	@${PP} -o ${NAME} ${src} -Iinclude -Wall -g3
+	@${PP} -o ${NAME} ${src} -Iinclude -Wall -g3 -lsfml-graphics -lsfml-window -lsfml-system
 	@echo 'Files compiled'
 
 all : ${NAME}
