@@ -22,10 +22,12 @@ class Game {
         ~Game();
 
         GameWindow *getWindow();
+        GameClock getClock();
 
         void display();
         void checkInput();
         void gameLoop();
+        void update();
 
         void createGame(GameWindow *window);
 

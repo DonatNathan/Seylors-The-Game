@@ -20,12 +20,10 @@ int main(int argc, char **argv)
     myMenu.createMenu(&gameWindow);
 
     while (gameWindow.getWindow().isOpen()) {
-        while (gameWindow.getWindow().pollEvent(gameWindow.getEvent())) {
-            if (gameWindow.getStatus() == MENU)
-                myMenu.gameMenuLoop();
-            else if (gameWindow.getStatus() == INGAME)
-                myGame.gameLoop();
-        }
+        if (gameWindow.getStatus() == MENU)
+            myMenu.gameMenuLoop();
+        else if (gameWindow.getStatus() == INGAME)
+            myGame.gameLoop();
     }
     return 0;
 }

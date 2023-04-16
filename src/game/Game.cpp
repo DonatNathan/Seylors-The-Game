@@ -21,9 +21,20 @@ void Game::createGame(GameWindow *window)
     this->window = window;
 }
 
+GameClock Game::getClock()
+{
+    return this->clock;
+}
+
 GameWindow *Game::getWindow()
 {
     return this->window;
+}
+
+void Game::update()
+{
+    if (this->mode == BOAT)
+        this->boat.updateBoat();
 }
 
 void Game::display()
@@ -37,23 +48,25 @@ void Game::display()
 
 void Game::checkInput()
 {
-    if (this->window->getEvent().type == sf::Event::Closed)
-        this->window->closeWindow();
-    if (this->mode == HUMAN)
-        this->human.checkInputHuman();
-    else if (this->mode == BOAT)
-        this->boat.checkInputBoat();
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
-        if (this->mode == BOAT)
-            this->mode = HUMAN;
-        else if (this->mode == HUMAN)
+    while (this->getWindow()->getWindow().pollEvent(this->getWindow()->getEvent())) {
+        if (this->window->getEvent().type == sf::Event::Closed)
+            this->window->closeWindow();
+        if (this->mode == HUMAN)
+            this->human.checkInputHuman();
+        else if (this->mode == BOAT)
+            this->boat.checkInputBoat();
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::B))
             this->mode = BOAT;
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::H))
+            this->mode = HUMAN;
     }
 }
 
 void Game::gameLoop()
 {
+    this->getClock().updateClock();
     this->window->refreshWindow();
     this->checkInput();
+    this->update();
     this->display();
 }

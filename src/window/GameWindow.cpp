@@ -11,6 +11,7 @@ GameWindow::GameWindow()
 {
     this->videoMode = {100, 100};
     this->name = "Seylors";
+    this->fps = 60;
     this->status = INGAME; //TODO Change to MENU
 }
 
@@ -21,6 +22,7 @@ GameWindow::~GameWindow()
 void GameWindow::createWindow()
 {
     this->window.create(sf::VideoMode(800, 600), "My window");
+    this->window.setFramerateLimit(this->fps);
 }
 
 void GameWindow::closeWindow()

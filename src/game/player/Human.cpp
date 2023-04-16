@@ -54,27 +54,27 @@ void Human::goIdle()
 void Human::goRight()
 {
     this->sprite.setTexture(this->texture_right);
-    this->position.x += 5;
+    this->position.x += 10;
     this->sprite.setPosition(this->position);
 }
 
 void Human::goLeft()
 {
     this->sprite.setTexture(this->texture_left);
-    this->position.x -= 5;
+    this->position.x -= 10;
     this->sprite.setPosition(this->position);
 }
 
 void Human::goUp()
 {
     this->sprite.setTexture(this->texture_up);
-    this->position.y -= 5;
+    this->position.y -= 10;
     this->sprite.setPosition(this->position);
 }
 
 void Human::goDown()
 {
     this->sprite.setTexture(this->texture_down);
-    this->position.y += 5;
+    this->position.y += 10;
     this->sprite.setPosition(this->position);
 }

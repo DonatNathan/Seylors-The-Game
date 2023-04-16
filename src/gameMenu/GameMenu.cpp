@@ -31,8 +31,10 @@ void GameMenu::display()
 
 void GameMenu::checkInput()
 {
-    if (this->window->getEvent().type == sf::Event::Closed)
-        this->window->closeWindow();
+    while (this->getWindow()->getWindow().pollEvent(this->getWindow()->getEvent())) {
+        if (this->window->getEvent().type == sf::Event::Closed)
+            this->window->closeWindow();
+    }
 }
 
 void GameMenu::gameMenuLoop()

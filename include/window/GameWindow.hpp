@@ -34,6 +34,7 @@ class GameWindow {
         std::tuple<int, int> videoMode;
         std::string name;
         int status;
+        int fps;
 };
 
 #endif /* !GAMEWINDOW_HPP_ */

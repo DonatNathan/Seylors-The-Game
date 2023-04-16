@@ -12,7 +12,7 @@ src = src/main.cpp	\
 	  src/gameMenu/GameMenu.cpp	\
 	  src/game/player/Human.cpp	\
 	  src/game/player/Boat.cpp	\
-	#   src/game/GameClock.cpp	\
+	  src/game/GameClock.cpp	\
 
 NAME = seylors
 
