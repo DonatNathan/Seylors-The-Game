@@ -10,6 +10,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <cmath>
 
 #define NONE 0
 #define BABORD -1
@@ -41,11 +42,13 @@ class Boat {
         sf::Vector2f scale;
         sf::Vector2f origin;
         sf::Texture texture;
-        float sails_position; // Value between 0 and 1 by 0.25
-        float speed; // Value between 0 and 1 by 0.25
+        double sails_position; // Value between 0 and 1 by 0.25
+        double speed; // Value between 0 and 1 by 0.25
         float turnSpeed;
-        int direction; // Value between 0 and 360
-        float helm; // Value between -0.5 and 0.5 by 0.1
+        double angle; // Value between 0 and 360
+        double radian;
+        sf::Vector2f direction;
+        double helm; // Value between -0.5 and 0.5 by 0.1
 };
 
 #endif /* !BOAT_HPP_ */
