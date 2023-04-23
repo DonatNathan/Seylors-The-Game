@@ -55,6 +55,8 @@ void Game::checkInput()
             this->human.checkInputHuman();
         else if (this->mode == BOAT)
             this->boat.checkInputBoat();
+
+        // TODO Change that
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::B))
             this->mode = BOAT;
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::H))

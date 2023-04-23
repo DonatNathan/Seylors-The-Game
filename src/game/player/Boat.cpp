@@ -22,6 +22,7 @@ Boat::Boat()
     this->radian = 0;
     this->direction = {0, 0};
     this->helm = 0;
+    this->post = HELM;
 }
 
 Boat::~Boat()
@@ -48,12 +49,12 @@ void Boat::calculateAngle()
 
 void Boat::moveBoat()
 {
-    this->angle += this->helm * 1.5;
+    this->angle += this->turnSpeed;
     if (this->angle > 360)
         this->angle -= 360;
     this->radian = this->angle * M_PI / 180;
-    this->direction.x = cos(radian);
-    this->direction.y = sin(radian);
+    this->direction.x = cos(radian) * this->speed;
+    this->direction.y = sin(radian) * this->speed;
     this->sprite.move(this->direction);
 }
 
@@ -81,6 +82,8 @@ void Boat::checkInputBoat()
         this->upSails();
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
         this->downSails();
+
+    // TODO Change that
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::P))
         std::cout << this->angle << std::endl;
 }

@@ -16,6 +16,12 @@
 #define BABORD -1
 #define TRIBORD 1
 
+#define HELM 0
+#define CROWS_NEST 1
+#define SAILS 2
+#define CANOON 3
+#define HANCHOR 4
+
 class Boat {
     public:
         Boat();
@@ -49,6 +55,7 @@ class Boat {
         double radian;
         sf::Vector2f direction;
         double helm; // Value between -0.5 and 0.5 by 0.1
+        int post;
 };
 
 #endif /* !BOAT_HPP_ */
