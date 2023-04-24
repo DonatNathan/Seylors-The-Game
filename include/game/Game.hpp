@@ -26,6 +26,7 @@ class Game {
 
         void display();
         void checkInput();
+        void checkAdminInput();
         void gameLoop();
         void update();
 
@@ -38,6 +39,7 @@ class Game {
         Boat boat;
         GameClock clock;
         int mode;
+        bool _isAdmin;
 };
 
 #endif /* !GAME_HPP_ */

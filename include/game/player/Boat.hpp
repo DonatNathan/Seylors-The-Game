@@ -22,7 +22,13 @@
 #define CANOON 3
 #define HANCHOR 4
 
-class Boat {
+#define NONE 0
+#define SINKING 1
+#define BURNING 2
+
+#include "game/player/BoatStats.hpp"
+
+class Boat : public BoatStats {
     public:
         Boat();
         ~Boat();
@@ -37,25 +43,20 @@ class Boat {
         void upSails();
         void downSails();
         void updateBoat();
+        void checkState();
 
         void displayBoat(sf::RenderWindow &window);
         void checkInputBoat();
+        void displayAdminMode(sf::RenderWindow &window);
 
     protected:
     private:
+
         sf::Sprite sprite;
         sf::Vector2f position;
         sf::Vector2f scale;
         sf::Vector2f origin;
         sf::Texture texture;
-        double sails_position; // Value between 0 and 1 by 0.25
-        double speed; // Value between 0 and 1 by 0.25
-        float turnSpeed;
-        double angle; // Value between 0 and 360
-        double radian;
-        sf::Vector2f direction;
-        double helm; // Value between -0.5 and 0.5 by 0.1
-        int post;
 };
 
 #endif /* !BOAT_HPP_ */

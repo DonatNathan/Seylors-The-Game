@@ -9,10 +9,12 @@ PP = g++
 src = src/main.cpp	\
 	  src/window/GameWindow.cpp	\
 	  src/game/Game.cpp	\
+	  src/game/GameClock.cpp	\
+	  src/game/Stats.cpp	\
 	  src/gameMenu/GameMenu.cpp	\
 	  src/game/player/Human.cpp	\
 	  src/game/player/Boat.cpp	\
-	  src/game/GameClock.cpp	\
+	  src/game/player/BoatStats.cpp	\
 
 NAME = seylors
 

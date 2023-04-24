@@ -10,6 +10,7 @@
 Game::Game()
 {
     this->mode = HUMAN;
+    _isAdmin = false;
 }
 
 Game::~Game()
@@ -41,9 +42,30 @@ void Game::display()
 {
     if (this->mode == HUMAN)
         this->human.displayHuman(this->window->getWindow());
-    else if (this->mode == BOAT)
+    else if (this->mode == BOAT) {
         this->boat.displayBoat(this->window->getWindow());
+        if (_isAdmin)
+            this->boat.displayAdminMode(this->window->getWindow());
+    }
     this->window->getWindow().display();
+}
+
+void Game::checkAdminInput()
+{
+    if (this->window->getEvent().type == sf::Event::KeyReleased) {
+        if (this->window->getEvent().key.code == sf::Keyboard::A) {
+            if (_isAdmin)
+                _isAdmin = false;
+            else
+                _isAdmin = true;
+        }
+        if (this->window->getEvent().key.code == sf::Keyboard::B) { // TODO Change that
+            if (this->mode == BOAT)
+                this->mode = HUMAN;
+            else
+                this->mode = BOAT;
+        }
+    }
 }
 
 void Game::checkInput()
@@ -51,16 +73,11 @@ void Game::checkInput()
     while (this->getWindow()->getWindow().pollEvent(this->getWindow()->getEvent())) {
         if (this->window->getEvent().type == sf::Event::Closed)
             this->window->closeWindow();
+        this->checkAdminInput();
         if (this->mode == HUMAN)
             this->human.checkInputHuman();
         else if (this->mode == BOAT)
             this->boat.checkInputBoat();
-
-        // TODO Change that
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::B))
-            this->mode = BOAT;
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::H))
-            this->mode = HUMAN;
     }
 }
 
